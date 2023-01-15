@@ -29,13 +29,13 @@ def  listar_pets(request):
 @login_required
 def pedido_adocao(request,id_pet):
     pet = Pet.objects.filter(id=id_pet).filter(status="P")
-    
+    peti = Pet.objects.get(id=id_pet) #pega os dados do dono do pet
     if not pet.exists():
         messages.add_message(request, constants.WARNING, 'Esse pet já foi adotado')
         return redirect('/adotar')
     
     pedido = PedidoAdocao(pet=pet.first(),
-                          usuario=request.user,                   
+                          usuario=peti.usuario, #dados do dono do pet sendo enviados para o sistema                  
                           data=datetime.now())
     pedido.save()
     messages.add_message(request, constants.SUCCESS, 'Pedido de adoção realizado com sucesso')

@@ -6,3 +6,5 @@ make:
 
 migrate:
 	python manage.py migrate
+
+#usar make [runserver] [make] [migrate]
