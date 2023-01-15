@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from adotar.models import PedidoAdocao
 from django.views.decorators.csrf import csrf_exempt
 
+
 @login_required
 def novo_pet(request):
     if request.method == 'GET':

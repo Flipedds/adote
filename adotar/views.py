@@ -35,12 +35,12 @@ def pedido_adocao(request,id_pet):
         return redirect('/adotar')
     
     pedido = PedidoAdocao(pet=pet.first(),
-                          usuario=request.user,                      
+                          usuario=request.user,                   
                           data=datetime.now())
     pedido.save()
     messages.add_message(request, constants.SUCCESS, 'Pedido de adoção realizado com sucesso')
     return redirect('/adotar')
-    
+
 @login_required
 def processa_pedido_adocao(request, id_pedido):
     status = request.GET.get('status')

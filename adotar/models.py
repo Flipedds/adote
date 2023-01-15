@@ -1,6 +1,7 @@
 from django.db import models
 from divulgar . models import Pet
 from django.contrib.auth.models import User
+
 class PedidoAdocao(models.Model):
     choices_status = (
         ('AG', 'Aguardando aprovação'),
