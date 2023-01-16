@@ -49,6 +49,7 @@
                                     <th>Nome</th>
                                     <th>Raça</th>
                                     <th>Status</th>
+                                    <th>alterar status</th>
                                     <th>Remover</th>
                                 </tr>
                                     {% for pet in pets %}
@@ -69,6 +70,9 @@
                                                 {% elif pet.status == "A" %}
                                                     <span class="badge bg-secondary">Adotado</span>
                                                     {% endif %}
+                                            </td>
+                                            <td>
+                                                <a href="{%  url 'alterar status' pet.id %}" class="btn btn-danger">ALTERAR</a>
                                             </td>
                                             <td>
                                                 <a href="{%  url 'remover_pet' pet.id %}" class="btn btn-danger">REMOVER</a>

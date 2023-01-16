@@ -69,6 +69,22 @@ def remover_pet(request,id):
     messages.add_message(request, constants.SUCCESS,'pet removido com sucesso')
     return redirect('/divulgar/seus_pets')
 
+def alterar_status(request,id):
+    status = request.GET.get('status')
+    pet = Pet.objects.get(id=id)
+    print(pet.status)
+    
+    status = pet.status
+    if status == "A":
+        pet.status = "P"
+    elif status == "P":
+        pet.status = "A"
+
+    pet.save()
+
+    messages.add_message(request, constants.SUCCESS,'status alterado com sucesso')
+    return redirect('/divulgar/seus_pets')
+
 @login_required
 def ver_pet(request, id):
     if request.method == "GET":
